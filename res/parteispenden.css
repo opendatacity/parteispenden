@@ -390,3 +390,7 @@ legend {
 	position: absolute;
 	z-index: 1100;
 }
+
+#map .olControlAttribution {
+	bottom: 3px;
+}
