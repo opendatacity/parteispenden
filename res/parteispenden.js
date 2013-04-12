@@ -480,7 +480,7 @@
 		 }
 	 };
 	
-	function addMarker(x, y, values, data, layer) {
+	function addMarker(x, y, values, data, layer, id) {
 		var makeMarker = function (radius, color) {
 			layer.addFeatures (
 				new OpenLayers.Feature.Vector(
@@ -488,7 +488,7 @@
 						new OpenLayers.Projection('EPSG:4326'), 
 						new OpenLayers.Projection('EPSG:900913')
 					),
-					{ some: data },
+					{ some: data, id: id },
 					{
 						graphicName: 'circle',
 						pointRadius: radius,
@@ -581,18 +581,23 @@
 		changeLayers();	
 	}
 	
+	function calcIdByLocation(lat, lon) {
+		return '_' + Math.round(20000*lat) + '_' + Math.round(20000*lon);
+	}
+
 	function addMarkers() {
 		var points = {};
 		
 		for (var i=0; i < fields.length; i++) {
 			var row = fields[i];
 			if (printLine(row)) {
-				var id = '_' + Math.round(20000*row[spLat]) + '_' + Math.round(20000*row[spLon]);
+				var id = calcIdByLocation(row[spLat], row[spLon]);
 				if (points[id] == undefined) {
 					points[id] = {
 						lat:row[spLat],
 						lon:row[spLon],
 						entries:[],
+						id:id,
 						sum:0
 					}
 				}
@@ -643,7 +648,7 @@
 			popupData += row[spPlz] + ' ' + row[spOrt] + '<br />';
 			popupData += row[spLand] + '<br />';
 						
-			addMarker(point.lon, point.lat, values, popupData, markers);
+			addMarker(point.lon, point.lat, values, popupData, markers, point.id);
 		
 		}
 		
@@ -664,8 +669,13 @@
 		}).appendTo('body').fadeIn(200);
 	}
 	
-	function openMap(lat,lon) {
+	function openMap(lat, lon) {
 		$('#tab_map').click();
+		var id = calcIdByLocation(lat, lon);
+		var features = markers.getFeaturesByAttribute('id', id);
+		selectControl.unselectAll();
+		selectControl.select(features[0]);
+		
 		//map.setCenter(new OpenLayers.LonLat(lon,lat).transform(new OpenLayers.Projection('EPSG:4326'),map.getProjectionObject()),18);
 	}
 	
