@@ -40,7 +40,12 @@
 	var fields = new Array;	
 	
 	function onPopupClose(evt) {
-		selectControl.unselect(selectedFeature);
+		try {
+			selectControl.unselect(selectedFeature);
+		} catch (e) {
+			selectedFeature.popup.hide();
+			selectedFeature.popup.destroy();
+		}
 	}
 
 	function onFeatureSelect(feature) {
