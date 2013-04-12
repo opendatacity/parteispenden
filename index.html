@@ -1,0 +1,269 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<title>taz.de - Parteispenden</title>
+		<script type="text/javascript" src="res/jquery-1.5.1.min.js"></script>  
+		<script type="text/javascript" src="res/jquery.csv.js"></script>        
+		<script type="text/javascript" src="res/OpenLayers.js"></script>
+		<script type="text/javascript" src="res/jquery.dataTables.js"></script>
+		<script type="text/javascript" src="res/jquery.flot.js"></script>
+		<script type="text/javascript" src="res/jquery.flot.pie.min.js"></script>
+		<!--[if IE]><script language="javascript" type="text/javascript" src="res/excanvas.min.js"></script><![endif]-->
+		<script type="text/javascript" src="res/OpenStreetMap.js"></script>
+		<script type="text/javascript" src="res/parteispenden.js"></script>                                        	
+		<link rel="stylesheet" type="text/css" href="res/parteispenden.css" />
+		<link rel="stylesheet" type="text/css" href="res/demo_table.css" />	
+	</head>                                                                 
+	<body>  
+		<div id="odc_parteispenden">
+			<div class="odctabs">
+				<div id="tab_map" class="odc_scene active">Karte</div>
+				<div id="tab_list" class="odc_scene">Liste</div>
+				<div id="tab_stru" class="odc_scene">Struktur</div>
+				<div id="tab_comp" class="odc_scene">Vergleich</div>
+				<div id="tab_info" class="odc_scene">Info</div>
+			</div>
+			<div id="recherche">
+				Recherchieren Sie in den <a href="http://www.taz.de/1/politik/parteispenden-recherche/" target="_blank">Spenderdaten 1994 bis 2011</a>
+			</div>
+			
+			<div style="clear:both;"></div>	
+			
+			<div id="odc_pagecontainer">
+				<div id="filter"> 
+					<fieldset style="height:151px">
+						<legend>Parteien</legend>
+						<div class="alle">
+							<input id="parteien_all" type="checkbox" checked="checked" />
+							<label for="parteien_all">alle</label>
+						</div>
+						<div class="parteizeile">
+							<input id="cdu" type="checkbox" checked="checked" />
+							<label for="cdu"><div class="partei cdu"></div>CDU</label>
+						</div>
+						<div class="parteizeile">
+							<input id="csu" type="checkbox" checked="checked"/>
+							<label for="csu"><div class="partei csu"></div>CSU</label>
+						</div>
+						<div class="parteizeile">
+							<input id="spd" type="checkbox" checked="checked"/>
+							<label for="spd"><div class="partei spd"></div>SPD</label>
+						</div>
+						<div class="parteizeile">
+							<input id="fdp" type="checkbox" checked="checked"/>
+							<label for="fdp"><div class="partei fdp"></div>FDP</label>
+						</div>
+						<div class="parteizeile">
+							<input id="gruene" type="checkbox" checked="checked"/>
+							<label for="gruene"><div class="partei gruene"></div>GRÜNE</label>
+						</div>
+						<div class="parteizeile">
+							<input id="linke" type="checkbox" checked="checked"/>
+							<label for="linke"><div class="partei linke"></div>LINKE</label>
+						</div>
+					</fieldset>
+					
+					<fieldset style="height:54px">
+						<legend>Spender</legend>
+						<input id="person" type="checkbox" checked="checked"/>
+						<label for="person">Personen</label><br />
+						<input id="unternehmen" type="checkbox" checked="checked"/>
+						<label for="unternehmen">Unternehmen</label><br />
+					</fieldset>
+					
+					<fieldset style="height:128px">
+						<legend>Spenden in €</legend>
+						<div class="alle">
+							<input id="spenden_all" type="checkbox" checked="checked"/>
+							<label for="spenden_all">alle</label>
+						</div>
+						<div class="spendenzeile">
+							<input id="spende1" type="checkbox" checked="checked"/>
+							<label for="spende1">10.000 - 25.000</label>
+						</div>
+						<div class="spendenzeile">
+							<input id="spende2" type="checkbox" checked="checked"/>
+							<label for="spende2">25.000 - 50.000</label>
+						</div>
+						<div class="spendenzeile">
+							<input id="spende3" type="checkbox" checked="checked"/>
+							<label for="spende3">50.000 - 75.000</label>
+						</div>
+						<div class="spendenzeile">
+							<input id="spende4" type="checkbox" checked="checked"/>
+							<label for="spende4">75.000 - 100.000</label>
+						</div>
+						<div class="spendenzeile">
+							<input id="spende5" type="checkbox" checked="checked"/>
+							<label for="spende5">100.000 und mehr</label>
+						</div>
+					</fieldset>
+					
+					<fieldset style="height:74px">
+						<legend>Land</legend>
+						<div class="alle">
+							<input id="laender_all" type="checkbox" />
+							<label for="laender_all">alle</label>
+						</div>
+						<div class="laenderzeile">
+							<input id="deutschland" type="checkbox" checked="checked"/>
+							<label for="deutschland">Deutschland</label>
+						</div>
+						<!--
+						<div class="laenderzeile">
+							<input id="grossbritannien" type="checkbox"/> <label for="grossbritannien">Großbritannien</label>
+						</div>
+						-->
+						<div class="laenderzeile">
+							<input id="oesterreich" type="checkbox"/> <label for="oesterreich">Österreich</label>
+						</div>
+						<!--
+						<div class="laenderzeile">
+							<input id="schweiz" type="checkbox"/> <label for="schweiz">Schweiz</label>
+						</div>
+						-->
+						<!--
+						<div class="laenderzeile">
+							<input id="usa" type="checkbox"/> <label for="usa">USA</label>
+						</div>
+						-->
+					</fieldset>
+					<div class="legend">Mit der Auswahl können Sie die Darstellung rechts filtern.</div>
+				</div> 	
+				
+				<div id="odc_mapcontainer" class="container">			
+					<div id="map"></div>
+				</div>
+				
+				<div id="odc_spendencontainer" class="container">
+					<div id="spenden"></div>
+				</div>
+				
+				<div id="odc_strucontainer" class="container">
+					<div style="clear:both;"></div>
+					<div id="odc_allcontainer">
+						<div id="allstat">
+							<div class="parteien">
+								<div class="parteiall">
+									<fieldset>
+										<legend>CDU</legend>
+										<div id="sum_0" class="sum_partei"></div>
+										<div id="stat_0" class="stat_partei"></div>
+									</fieldset>
+								</div>
+								<div class="parteiall">
+									<fieldset>
+										<legend>CSU</legend>
+										<div id="sum_1" class="sum_partei"></div>
+										<div id="stat_1" class="stat_partei"></div>
+									</fieldset>
+								</div>
+								<div class="parteiall">
+									<fieldset>
+										<legend>SPD</legend>
+										<div id="sum_2" class="sum_partei"></div>
+										<div id="stat_2" class="stat_partei"></div>
+									</fieldset>
+								</div>
+								<div style="clear:both;"></div>
+								<div class="parteiall">
+									<fieldset>
+										<legend>FDP</legend>
+										<div id="sum_3" class="sum_partei"></div>
+										<div id="stat_3" class="stat_partei"></div>
+									</fieldset>
+								</div>
+								<div class="parteiall">
+									<fieldset>
+										<legend>GRÜNE</legend>
+										<div id="sum_4" class="sum_partei"></div>
+										<div id="stat_4" class="stat_partei"></div>
+									</fieldset>
+								</div>
+								<div class="parteiall">
+									<fieldset>
+										<legend>LINKE</legend>
+										<div id="sum_5" class="sum_partei"></div>
+										<div id="stat_5" class="stat_partei"></div>
+									</fieldset>
+								</div>
+								<div style="clear:both;"></div>
+								<div class="legend">
+									<p>Mitglieds- und Mandatsbeiträge sowie ähnliche Beitrage sind unter Spenden von Personen zusammengefasst (Punkte 1 und 2 der Einnahmen- und Ausgaben-Rechnung gem. §24 Abs. 9 Partg).</p>
+									<p>Unter sonstigen Einnahmen sind Einnahmen aus Unternehmenstätigkeit und Beteiligungen, vorhandenes Vermögen sowie Einnahmen aus Veranstaltungen, Vertrieb von Drucksachen und Veröffentlichungen und sonstige mit Einnahmen verbundenen Tätigkeiten summiert (Punkte 5, 6, 7und 9 der Einnahmen- und Ausgaben-Rechnung gem. §24 Abs. 9 Partg).</p>
+								</div>
+							</div>
+							<div class="legend3">
+								<fieldset>
+									<legend>Legende</legend>
+									<div class="spendenzeile2">
+										<div class="spende" style="background-color:#e09b88"></div>
+										<div class="lines4">Spenden Herkunft bekannt,<br />Personen<br />ab 10.000€</div>
+									</div>
+									<div class="spendenzeile2">
+										<div class="spende" style="background-color:#c23811"></div>
+										<div class="lines4">Spenden Herkunft unbekannt,<br />Personen<br />unter 10.000€</div>
+									</div>
+									<div class="spendenzeile2">
+										<div class="spende" style="background-color:#8cb8e0"></div>
+										<div class="lines4">Spenden Herkunft bekannt,<br />Unternehmen/Vereine<br />ab 10.000€</div>
+									</div>
+									<div class="spendenzeile2">
+										<div class="spende" style="background-color:#1a72c1"></div>
+										<div class="lines4">Spenden Herkunft unbekannt,<br />Unternehmen/ Vereine<br />ab 10.000€</div>
+									</div>
+									<div class="spendenzeile2">
+										<div class="spende" style="background-color:#ede59c"></div>
+										<div class="lines4"><p>Staatliche Mittel</p></div>
+									</div>
+									<div class="spendenzeile2">
+										<div class="spende" style="background-color:#dccc3a"></div>
+										<div class="lines4"><p>Sonstige Einnahmen</p></div>
+									</div>
+								</fieldset>
+							</div>
+							<div style="clear:both;"></div>
+						</div>
+					</div>
+				</div>
+				<div id="odc_compcontainer" class="container">
+					<div id="selstat">
+						<fieldset>
+							<legend>Summe aller ausgewählten Spenden in €</legend>
+							<div id="stat_sum"></div>
+						</fieldset>
+						<fieldset>
+							<legend>Anzahl aller ausgewählten Spenden</legend>
+							<div id="stat_anz"></div>
+						</fieldset>
+						<fieldset>
+							<legend>Durchschnitt aller ausgewählten Spenden in €</legend>
+							<div id="stat_avg_nat"></div>
+						</fieldset>
+						<div class="legend">Datengrundlage: Einzelspenden über 10.000 €</div>
+					</div>
+				</div>
+			
+				<div id="odc_infocontainer" class="container"> 
+					<div id="info">
+						<p>Ausgangsdokument für die Spenden-App sind die Spender-Angaben der Parteien im <a href="http://www.bundestag.de/bundestag/parteienfinanzierung/rechenschaftsberichte/index.html">Bundesrechenschaftsbericht</a> für das Jahr 2011.<br />(Hier der direkte Link des PDF zum <a href="http://dip21.bundestag.de/dip21/btd/17/085/1708550.pdf">Download</a>).</p>
+						<p>Im PDF liegen die Spender-Listen nicht als Text, sondern nur als eingescanntes Bild vor - daher mussten die Daten mittels Texterkennung digitalisiert, kontrolliert und in einheitliche Tabellenform gebracht werden.</p>
+						<p>Alle <a href="http://de.wikipedia.org/wiki/Juristische_Person">juristischen Personen</a> haben wir als Unternehmen/Vereine zusammengefasst und alle <a href="http://de.wikipedia.org/wiki/Nat%C3%BCrliche_Person">natürlichen Personen</a> als Personen.</p>
+						<p>Wir haben uns bemüht, alle Zahlen zu kontrollieren und bei Namen scan-bedingte Fehler zu korrigieren - dennoch können die Daten kleine Fehler enthalten. Wir sind dankbar für entsprechende Hinweise.</p>
+						
+						<p>Realisierung: OpenDataCity - <a href="http://www.opendatacity.de" target="_blank" >www.opendatacity.de</a><br />
+						Konzeption: Marco Maas, Lorenz Matzat<br />
+						Programmierung: Stephan Lindner, Michael Kreil</p>
+					</div>
+				</div>
+				<div style="clear:both;"></div>
+			</div>
+			<div id="realisierung">
+				Realisiert durch <a href="http://www.opendatacity.de" target="_blank">OpenDataCity</a> - Quelle: <a href="http://www.bundestag.de/service/glossar/R/rechenschaftsberichte.html" target="_blank">Bundestag</a> - Download Data 2011: <a href="https://docs.google.com/spreadsheet/pub?key=0AiPsuRiwCc7_dGZtcGMyZHVLRU9fdmZvMVBqYlBmMlE&output=html" target="_blank">Google Docs</a>
+			</div>
+		</div>
+	</body>                                                                 
+</html>
+

@@ -1,0 +1,392 @@
+body {
+	font-size:11px;
+	font-family: Verdana, Helvetica, sans-serif;
+	margin:0px;
+}
+
+a {
+	color: #000;
+}
+
+#spendentable_info {
+	float: left;
+	width: 50%;
+	padding-top: 7px;	
+}
+
+.top {
+	padding: 5px;	
+}
+
+#statistik {
+	 font-size: 12px;	
+}
+
+#statistik .legend3 {
+	 font-size: 12px;	
+}
+
+#statistik table {
+  border-collapse: collapse;
+}
+
+#statistik th {
+  border-width: 1px 1px 0 0;
+  border-style:solid; 
+  margin: 0;
+  padding: 4px;
+  color: white;
+  background-color: black;
+}
+
+#statistik td {
+  border-width: 1px 1px 0 0;
+  border-style:solid; 
+  margin: 0;
+  padding: 4px;
+  background-color: #EFEDE4;
+  text-align: right;
+}
+
+#spenden table {
+	border-spacing: 0;
+}
+
+#spenden th, #spenden td {
+  border-bottom: 1px solid #CCC;
+  border-right: 1px solid #CCC;
+  margin: 0;
+}
+
+#spenden th {
+  border-top: 1px solid #CCC;
+  padding: 2px 14px 2px 0px;
+  background-color: #DDD;
+}
+
+#spenden td {
+  padding: 4px;
+}
+
+#spenden td:last-child {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#spenden td.sorting_1, #spenden td.sorting_2, #spenden td.sorting_3 {
+	background-color: #DDD;
+}
+
+#spenden th:last-child, #spenden td:last-child {
+	border-right: none;
+}
+
+#spenden tr:first-child td {
+	border-top: none;
+}
+
+table .land, table .partei {
+  text-align: center;
+}
+
+table .spende {
+  text-align: right;
+}
+
+#odc_parteispenden {
+	width: 825px;
+	height: 617px;
+	overflow: hidden;
+}
+
+#odc_pagecontainer {
+    background-color: #EEEEEF;
+    padding: 5px;
+    width: 815px;	
+    height: 558px;	
+}
+
+
+#odc_parteispenden .odctabs .odc_scene {
+    float: left;
+    font-size: 12.1px;
+    font-weight: bold;
+    height: 21px;
+    line-height: 16px;
+    background: #CCCCCD;
+    margin-top:5px;
+    margin-right: 2px;
+    color: #000000;
+    cursor: pointer;
+    padding: 6px 10px 0 10px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+#odc_parteispenden .odctabs .odc_scene.active {
+    background: #EEEEEF;
+    color: #4D4B45;
+}
+
+#odc_parteispenden .odctabs .odc_stat {
+    float: left;
+    font-size: 12.1px;
+    font-weight: bold;
+    height: 22px;
+    line-height: 16px;
+    text-transform: uppercase;
+    background: none repeat scroll 0 0 #CCCCCD;
+    border-top: 5px solid #EEEEEF;
+    color: #000000;
+    cursor: pointer;
+    padding: 5px 10px 0;
+}
+
+#odc_parteispenden .odctabs .odc_stat.active {
+    background: none repeat scroll 0 0 #BBBBBC;
+    border-top: 5px solid #BBBBBC;
+    color: #4D4B45;
+    cursor: auto;
+    font-weight: bold;
+    padding: 1px 10px 4px;
+}
+
+fieldset {
+	display: block;
+	padding: 5px 5px 10px 5px;
+	line-height: 12px;
+	border: none;
+	-webkit-margin-start: auto !important;
+	-webkit-margin-end:   auto !important;
+}
+
+#filter fieldset {
+	border-bottom: 1px solid #CCC;
+	margin: 0px 0px 10px 0px;
+	padding: 10px 10px 10px 10px;
+}
+
+legend {
+	font-weight: bold;
+	-webkit-padding-start: auto;
+	-webkit-padding-end: auto;
+}
+
+#legend3 fieldset {
+	margin:5px;
+}
+
+.parteien fieldset {
+	margin-top: 10px;
+	padding-left: 9px;
+}
+
+#odc_compcontainer fieldset {
+	margin-top: 15px;
+}
+
+#filter {
+	float:left;
+	width:180px;
+	height:550px;
+}
+
+#filter legend {
+	margin: 0 0 0 -5px;
+	height: 17px;
+	position: relative;
+	top: 5px;
+}
+
+.container {
+	margin:5px;
+	float:right;
+}
+
+#map {
+	width:623px;
+	height:546px;
+	border: 1px solid #ccc;
+}
+
+#spenden {
+	width:623px;
+	background: #FFF;
+	border: 1px solid #CCC;
+}
+
+#spendentable {
+	width: 625px;
+}
+
+#statistik {
+	width:625px;
+	height:550px;
+}
+
+.parteizeile .partei {
+	width: 12px;
+	height: 12px;
+	border: 1px solid #FFFFFF; 
+	float: left;
+	margin: 0px 3px 0px 3px;
+	
+	/*
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
+	filter: alpha(opacity=40);
+	opacity: .4;
+	*/
+}
+
+.parteizeile label {
+	margin-top: 2px;
+}
+.cdu {
+	background-color: #111111; 
+}
+.csu {
+	background-color: #666666; 
+}
+.spd {
+	background-color: #D61E1E; 
+}
+.fdp {
+	background-color: #E4A300; 
+}
+.gruene {
+	background-color: #78BC1B; 
+}
+.linke {
+	background-color: #BD3075; 
+}
+.parteizeile, .alle {
+	clear: both;
+	margin: 0;
+	height: 19px;
+}
+
+#filter .parteizeile input {
+	float: left;
+	margin-left: 20px;
+	margin-top: 0px;
+}
+#filter .spendenzeile input {
+	margin-left: 20px;
+}
+#filter .laenderzeile input {
+	margin-left: 20px;
+}
+#googlelink {
+	position:absolute;
+	top:596px;
+	left:195px;
+	z-index:100;	
+}
+#realisierung {
+	width:99%;
+	text-align:right;	
+}
+#stat_sum, #stat_anz , #stat_avg_nat{
+	width:600px;
+	height:132px;	
+}
+
+.parteiall {
+	width:132px;
+	height:200px;
+	float:left;
+	margin: 5px 0 0 5px;
+	border: 1px solid #CCC;
+	background: #FFF;
+}
+.stat_partei {
+	width: 115px;
+	height: 115px;
+}
+.sum_partei {
+	margin: 5px 0  15px 0;
+}
+
+.legend {
+	margin: 7px;
+	font-size:10px;
+}
+
+.legend p {
+	margin: 7px;
+	font-size:10px;
+}
+
+#allstat .legend {
+	width: 435px;	
+}
+
+.parteien {
+	float: left;
+	width: 425px;
+	margin-top: 10px;
+}
+
+.spendenzeile2 .spende {
+	width: 30px;
+	height: 30px;
+	border: 1px solid #FFFFFF; 
+	float: left;
+	margin: 0px -32px 0px 0px;
+}
+
+.spendenzeile2 {
+	margin: 5px;
+	height: 75px;
+	vertical-align: middle;
+	clear: both;
+}
+/*.spendenzeile2 p {
+	margin: 4px;
+}*/
+.legend3 {
+	width: 200px;
+	float:right;
+	margin: 5px 0 0 0;
+}
+
+#info {
+	float: right;
+	margin: 10px;
+	width: 600px;
+	font-size: 12px;
+	height: 500px;	
+}
+
+#info p {
+	line-height: 1.8em;
+	margin: 2em;
+}
+
+.lines4 {
+	padding-top: 0px;	
+	float: left;
+	margin: 0px 5px 20px 40px;
+}
+
+.lines3 {
+	padding-top: 2px;	
+}
+
+.line1 {
+	padding-top: 1px;	
+}
+#recherche {
+	width: 100%;
+	text-align: right;
+	padding-top: 15px;	
+}	
+
+.data-point-label {
+	font-size: 8px;
+	color: #555;
+	text-align: center;
+	width: 60px;
+	position: absolute;
+	z-index: 1100;
+}
