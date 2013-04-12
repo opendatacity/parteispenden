@@ -219,61 +219,63 @@
 		}
 		
 		for (var x=0; x < fields.length; x++) {
-			if (printLine(fields[x])) {
+			var field = fields[x];
+
+			if (printLine(field)) {
 				
 				// Liste
 				if ($('#tab_list').hasClass('active')) {
-					var line = '<tr><td><a href="#" onclick="openMap('+fields[x][spLat]+','+fields[x][spLon]+');return false;">';
-					if ($.trim(fields[x][spVorname])) {
-						line += $.trim(fields[x][spName])+', '+$.trim(fields[x][spVorname]);
+					var line = '<tr><td><a href="#" onclick="openMap('+field[spLat]+','+field[spLon]+');return false;">';
+					if ($.trim(field[spVorname])) {
+						line += $.trim(field[spName])+', '+$.trim(field[spVorname]);
 					} else {
-						line += $.trim(fields[x][spName]);
+						line += $.trim(field[spName]);
 					}
 					line += '</a></td>';
-					line += '<td class="strasse">'+fields[x][spStrasse]+'</td>';
-					switch (fields[x][spLand]) {
+					line += '<td class="strasse">'+field[spStrasse]+'</td>';
+					switch (field[spLand]) {
 						case 'Deutschland':
-							line += '<td class="plz">D-'+fields[x][spPlz]+'</td>';
+							line += '<td class="plz">D-'+field[spPlz]+'</td>';
 							break;
 						case 'Großbritannien':
-							line += '<td class="plz">GB-'+fields[x][spPlz]+'</td>';
+							line += '<td class="plz">GB-'+field[spPlz]+'</td>';
 							break;
 						case 'Österreich':
-							line += '<td class="plz">AT-'+fields[x][spPlz]+'</td>';
+							line += '<td class="plz">AT-'+field[spPlz]+'</td>';
 							break;
 						case 'Schweiz':
-							line += '<td class="plz">CH-'+fields[x][spPlz]+'</td>';
+							line += '<td class="plz">CH-'+field[spPlz]+'</td>';
 							break;
 						case 'USA':
-							line += '<td class="plz">US-'+fields[x][spPlz]+'</td>';
+							line += '<td class="plz">US-'+field[spPlz]+'</td>';
 							break;
 						default:
-							line += '<td class="plz">'+fields[x][spPlz]+'</td>';
+							line += '<td class="plz">'+field[spPlz]+'</td>';
 					}
-					line += '<td class="ort">'+fields[x][spOrt]+'</td>';
-					// output = output + '<td class="land">'+fields[x][spLand]+'</td>';
-					if (fields[x][spPartei]=='GRUENE') {
+					line += '<td class="ort">'+field[spOrt]+'</td>';
+					// output = output + '<td class="land">'+field[spLand]+'</td>';
+					if (field[spPartei]=='GRUENE') {
 						line += '<td class="partei">GRÜNE</td>';
 					}
 					else {
-						line += '<td class="partei">'+fields[x][spPartei]+'</td>';
+						line += '<td class="partei">'+field[spPartei]+'</td>';
 					}
-					line += '<td class="spende">'+number_format(fields[x][spSpende],2,',','.')+'</td>';
+					line += '<td class="spende">'+number_format(field[spSpende],2,',','.')+'</td>';
 					line += "</tr>\n";
 					output += line;
 				}
 				
 				// Statistik
 				if ($('#tab_stru').hasClass('active') || $('#tab_comp').hasClass('active')) {
-					if ($.trim(fields[x][spVorname])){
-						fields_kum[fields[x][spPartei]]['nat_select']+=fields[x][spSpende];
-						fields_kum[fields[x][spPartei]]['nat_select_anz']++;
+					if ($.trim(field[spVorname])){
+						fields_kum[field[spPartei]]['nat_select']+=field[spSpende];
+						fields_kum[field[spPartei]]['nat_select_anz']++;
 					} else {
-						fields_kum[fields[x][spPartei]]['jur_select']+=fields[x][spSpende];
-						fields_kum[fields[x][spPartei]]['jur_select_anz']++;
+						fields_kum[field[spPartei]]['jur_select']+=field[spSpende];
+						fields_kum[field[spPartei]]['jur_select_anz']++;
 					}
-					fields_kum[fields[x][spPartei]]['sum_select'] += fields[x][spSpende];
-					fields_kum[fields[x][spPartei]]['sum_select_anz']++;
+					fields_kum[field[spPartei]]['sum_select'] += field[spSpende];
+					fields_kum[field[spPartei]]['sum_select_anz']++;
 				}
 			}
 		}
