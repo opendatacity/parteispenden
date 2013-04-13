@@ -684,11 +684,12 @@
 	$(document).ready(function() {
 		
 		map = new OpenLayers.Map('map');
-		mainLayer = new OpenLayers.Layer.OSM(
-			'Map',
-			'http://b.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/61184/256/${z}/${x}/${y}.png',
-			{attribution: 'Powered by <a href="http://leaflet.cloudmade.com">Leaflet</a> — Map data © <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>'}
-		);
+
+		mainLayer = new OpenLayers.Layer.CloudMade("CloudMade", {
+			key: 'BC9A493B41014CAABB98F0471D759707',
+			styleId: 61184
+		});
+
 		markers = new OpenLayers.Layer.Vector(
 			'Parteien'
 		);
