@@ -685,10 +685,12 @@
 		
 		map = new OpenLayers.Map('map');
 
-		mainLayer = new OpenLayers.Layer.CloudMade("CloudMade", {
-			key: 'BC9A493B41014CAABB98F0471D759707',
-			styleId: 61184
-		});
+		mainLayer = new OpenLayers.Layer.ODCDN("europe2", {});
+
+//		mainLayer = new OpenLayers.Layer.CloudMade("CloudMade", {
+//			key: 'BC9A493B41014CAABB98F0471D759707',
+//			styleId: 61184
+//		});
 
 		markers = new OpenLayers.Layer.Vector(
 			'Parteien'
